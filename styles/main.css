@@ -43,16 +43,16 @@ table {
 
 table, th, td {
     border: 1px solid;
-    
-  }
+}
 
 th, td {
   padding: 15px;
   text-align: center;
 }
 
-td {
+th, td {
     background-color: #333;
+    color: white;
 }
 
 td a {
@@ -64,3 +64,19 @@ td a:hover {
     background-color: azure;
     color: #333;
 }
+
+.ammount-value {
+    padding: 10px;
+}
+
+/* Zone pour les résultats statistiques */
+.stats-result {
+    margin-top: 20px;
+  }
+  
+  /* Limite la largeur des graphiques */
+  canvas {
+    max-width: 600px;
+    margin-top: 20px;
+    display: block;  /* Pour éviter un éventuel "inline canvas" */
+  }

@@ -1,39 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DixLan Math - Statistic</title>
-    <link rel="stylesheet" href="../styles/main.css">
+  <meta charset="UTF-8">
+  <title>Exemple : Saisie / Effectifs / Import CSV</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../styles/statistic.css">
 </head>
 <body>
-    <div class="header">
-        <ul class="header">
-            <li class="header"><a class="header" href="../index.html">Home</a></li>
-            <li class="header"><a class="header" href="news.asp">News</a></li>
-            <li class="header"><a class="header" href="contact.asp">Contact</a></li>
-            <li class="header"><a class="header" href="about.asp">About</a></li>
-        </ul>  
-    </div>
+  <h1>Exemple : Saisie par Individus / Saisie par Effectif / Import CSV</h1>
 
-    <div class="introduction">
-        <h1>Welcome to Dixlan Math - Statistic</h1>
-        <p>The website i built for making math easyer</p>
-        <br>
-        <p>Where did you want to start ?</p>
+  <div>
+    <label for="mode-select">Mode :</label>
+    <select id="mode-select">
+      <option value="individus">Saisie par individu</option>
+      <option value="effectif">Saisie par effectif (quantitatif discret)</option>
+      <option value="csv-individus">Importer CSV (Individus)</option>
+      <option value="csv-effectif">Importer CSV (Effectif)</option>
+    </select>
+  </div>
 
-        <div class="selector">
-            <table>
-                <tr>
-                  <td><a href="math/statistic.html">Statistic</a></td>
-                  <td><a href="physics.html">Work in progres</a></td>
-                </tr>
-                <tr>
-                  <td><a href="index.html">Work in progress</a></td>
-                  <td><a href="index.html">Work in progres</a></td>
-                </tr>
-              </table> 
-        </div>
-    </div>
+  <!-- Bloc : Saisie par individu -->
+  <div id="bloc-individus">
+    <h2>Saisie par individu</h2>
+    <form id="form-individus">
+      <label>Nombre de lignes :</label>
+      <input type="number" id="individus-count" min="1" placeholder="Ex: 3">
+      <button>Générer</button>
+    </form>
+    <table id="table-individus">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Value</th>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Bloc : Saisie par effectif -->
+  <div id="bloc-effectif" class="hidden">
+    <h2>Saisie par effectif (quantitatif discret)</h2>
+    <form id="form-effectif">
+      <label>Nombre de lignes :</label>
+      <input type="number" id="effectif-count" min="1" placeholder="Ex: 4">
+      <button>Générer</button>
+    </form>
+    <table id="table-effectif">
+      <tr>
+        <th>ID</th>
+        <th>Valeur</th>
+        <th>Effectif</th>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Bloc : Import CSV (Individus) -->
+  <div id="bloc-csv-individus" class="hidden">
+    <h2>Import CSV - Individus</h2>
+    <p>Format attendu : <code>Name,Value</code> sur chaque ligne.</p>
+    <input type="file" id="file-csv-individus" accept=".csv" />
+  </div>
+
+  <!-- Bloc : Import CSV (Effectif) -->
+  <div id="bloc-csv-effectif" class="hidden">
+    <h2>Import CSV - Effectif (quantitatif discret)</h2>
+    <p>Format attendu : <code>Value,Effectif</code> sur chaque ligne.</p>
+    <input type="file" id="file-csv-effectif" accept=".csv" />
+  </div>
+
+  <div>
+    <button id="btn-calculer">Calculer les stats</button>
+  </div>
+
+  <!-- SECTION AFFICHAGE RESULTATS -->
+  <div class="stats-section">
+    <h2>Résultats statistiques</h2>
+
+    <h3>Quantitatif</h3>
+    <p>Moyenne : <span id="mean"></span></p>
+    <p>Médiane : <span id="median"></span></p>
+    <p>Variance : <span id="variance"></span></p>
+    <p>Écart-type : <span id="stddev"></span></p>
+    <p>Coefficient de variation (CV %) : <span id="cv"></span></p>
+    <p>Fréquences (nombre d'occurrences) :</p>
+    <ul id="freq-quanti"></ul>
+    <canvas id="bar-quanti"></canvas>
+    <canvas id="pie-quanti"></canvas>
+
+    <h3>Qualitatif</h3>
+    <p>Fréquences (nombre d'occurrences) :</p>
+    <ul id="freq-quali"></ul>
+    <canvas id="bar-quali"></canvas>
+    <canvas id="pie-quali"></canvas>
+  </div>
+  <script src="js/statistic.js"></script>
 </body>
 </html>

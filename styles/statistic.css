@@ -1,0 +1,43 @@
+  table, th, td {
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  h3 {
+    margin-top: 40px;
+  }
+  
+  canvas {
+    max-width: 600px;
+    margin-top: 20px;
+    display: block;
+  }
+  
+body { font-family: 'Courier New', Courier, monospace; margin: 20px; background-color: lightblue;}
+
+.hidden { display: none; }
+table, th, td {
+  border: 1px solid #aaa;
+  border-collapse: collapse;
+  padding: 8px;
+}
+
+th { background-color: #f0f0f0; }
+.stats-section {
+  margin-top: 30px;
+}
+
+.stats-section h3 {
+  margin-top: 20px;
+}
+
+canvas {
+  max-width: 500px;
+  margin-top: 10px;
+  display: block;
+}
